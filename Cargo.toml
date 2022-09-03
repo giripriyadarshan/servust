@@ -2,6 +2,15 @@
 name = "servust"
 version = "0.1.0"
 edition = "2021"
+authors = ["Priyadarshan Giri <giripriyadarshan@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/giripriyadarshan/servust"
+homepage = "https://github.com/giripriyadarshan/servust"
+description = "Rust Backend-server template generator"
+keywords = ["server", "database", "orm", "template", "boilerplate"]
+categories = ["command-line-interface","command-line-utilities", "development-tools"]
+exclude = ["target/**",".gitignore",".github/**","LICENSE-MIT",".idea/**"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -9,6 +18,10 @@ edition = "2021"
 clap = { version = "3.2.19", features = ["derive"] }
 reqwest = "0.11.11"
 tokio = { version = "1.21.0", features = ["full"] }
+
+[[bin]]
+name = "servust"
+path = "src/main.rs"
 
 
 [profile.release]
