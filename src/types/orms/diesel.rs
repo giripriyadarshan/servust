@@ -1,16 +1,7 @@
 use crate::lib::download::download_file;
 use std::process::Command;
 
-pub async fn install_orm(orm: String, database: String) -> Result<bool, String> {
-    // TODO: implement the orm module
-
-    return match orm.as_str() {
-        "diesel" => diesel(database).await,
-        _ => Err(format!("{} is not an implemented orm by Servust", orm)),
-    };
-}
-
-async fn diesel(database: String) -> Result<bool, String> {
+pub async fn diesel(database: String) -> Result<bool, String> {
     let diesel = Command::new("cargo")
         .arg("add")
         .arg("diesel")

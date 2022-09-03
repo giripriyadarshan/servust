@@ -5,7 +5,7 @@ mod lib;
 mod types;
 
 use lib::which::which;
-use types::{framework::install_framework, orm::install_orm};
+use types::install::{install_framework, install_orm};
 
 #[derive(Parser, Default, Debug)]
 #[clap(
