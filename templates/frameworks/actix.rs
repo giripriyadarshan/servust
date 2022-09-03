@@ -10,10 +10,11 @@ async fn index(req: HttpRequest) -> &'static str {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
+    let pool = pool().await;
+    HttpServer::new(move || {
         App::new()
             .wrap(middleware::Logger::default())
-            .app_data(web::Data::new(pool().clone()))
+            .app_data(web::Data::new(pool.clone()))
             .service(web::resource("/index.html").to(|| async { "Hello world!" }))
             .service(web::resource("/").to(index))
     })
