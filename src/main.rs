@@ -1,10 +1,11 @@
 use clap::{self, Parser};
 use std::{path::Path, process::Command};
 
-mod types;
 mod lib;
+mod types;
 
-use types::framework::install_framework;
+use lib::which::which;
+use types::{framework::install_framework, orm::install_orm};
 
 #[derive(Parser, Default, Debug)]
 #[clap(
@@ -33,6 +34,11 @@ struct Arguments {
 
 #[tokio::main]
 async fn main() {
+    if which("cargo").is_none() {
+        println!("Please install cargo using rustup via https://rustup.rs/");
+        return;
+    }
+
     let args = Arguments::parse();
     println!("{:?}", args);
 
@@ -53,13 +59,21 @@ async fn main() {
     std::env::set_current_dir(Path::new(&args.name)).unwrap();
 
     // TODO: implement the database module
-    let _database_arg = match args.database {
+    let database_arg = match args.database {
         Some(db) => db,
         None => "postgres".to_string(),
     };
 
     match install_framework(args.framework).await {
         Ok(_) => println!("framework added"),
+        Err(e) => {
+            println!("{}", e);
+            return;
+        }
+    }
+
+    match install_orm(args.orm, database_arg).await {
+        Ok(_) => println!("orm added"),
         Err(e) => {
             println!("{}", e);
             return;

@@ -1,6 +1,8 @@
 use actix_web::{middleware, web, App, HttpRequest, HttpServer};
 use crate::db::pool;
 
+mod db;
+
 async fn index(req: HttpRequest) -> &'static str {
     println!("REQ: {req:?}");
     "Hello world!"
@@ -11,7 +13,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .wrap(middleware::Logger::default())
-            .app_data(web::Data::new(pool()))
+            .app_data(web::Data::new(pool().clone()))
             .service(web::resource("/index.html").to(|| async { "Hello world!" }))
             .service(web::resource("/").to(index))
     })

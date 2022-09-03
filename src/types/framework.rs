@@ -24,8 +24,6 @@ async fn actix() -> Result<bool, String> {
         return Err("Error adding actix package".to_string());
     }
 
-    //TODO: write code to download and replace main.rs and other files
-
     download_file("https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/actix.rs", "src/main.rs").await;
 
     Ok(true)
