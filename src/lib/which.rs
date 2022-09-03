@@ -1,5 +1,4 @@
-use std::env;
-use std::path::PathBuf;
+use std::{env, path::PathBuf};
 
 pub fn which(program: &str) -> Option<PathBuf> {
     let path = env::var_os("PATH")?;
