@@ -58,13 +58,14 @@ async fn main() {
     // change directory to the newly created project
     std::env::set_current_dir(Path::new(&args.name)).unwrap();
 
-    // TODO: implement the database module
     let database_arg = match args.database {
         Some(db) => db,
         None => "postgres".to_string(),
     };
 
-    match install_framework(args.framework).await {
+    let framework = args.framework.as_str();
+
+    match install_framework(framework).await {
         Ok(_) => println!("framework added"),
         Err(e) => {
             println!("{}", e);
@@ -72,7 +73,7 @@ async fn main() {
         }
     }
 
-    match install_orm(args.orm, database_arg).await {
+    match install_orm(args.orm, database_arg, framework).await {
         Ok(_) => println!("orm added"),
         Err(e) => {
             println!("{}", e);
