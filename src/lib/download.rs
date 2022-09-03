@@ -7,7 +7,7 @@ pub async fn download_file(source: &str, destination: &str) {
 
     let mut file = match std::fs::File::create(&path) {
         Ok(f) => f,
-        Err(e) => panic!("couldn't create {}", e)
+        Err(e) => panic!("couldn't create {}", e),
     };
 
     let content = response.bytes().await.unwrap();
