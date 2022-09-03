@@ -9,9 +9,9 @@ use types::install::{install_framework, install_orm};
 
 #[derive(Parser, Default, Debug)]
 #[clap(
-    author = "Giri Priyadarshan <github/giripriyadarshan>",
+    author = "Priyadarshan Giri <github/giripriyadarshan>",
     version,
-    about = "Rust backend server template generator"
+    about = "Rust backend-server template generator"
 )]
 struct Arguments {
     #[clap(forbid_empty_values = true)]
