@@ -1,4 +1,4 @@
-use crate::lib::download::download_file;
+use crate::lib::{append_to_file::append, download::download_file};
 use std::process::Command;
 
 pub async fn install_orm(orm: String, database: String) -> Result<bool, String> {
@@ -28,6 +28,12 @@ async fn diesel(database: String) -> Result<bool, String> {
     download_file(&format!(
         "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/orms/diesel/{}.rs",
         &database), "src/db.rs").await;
+
+    append(
+        "#[macro_use]\nextern crate diesel;".to_string(),
+        "src/main.rs".to_string(),
+    )
+    .unwrap();
 
     Ok(true)
 }
