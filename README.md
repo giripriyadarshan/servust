@@ -7,7 +7,11 @@ Servust is a simple CLI tool to create a new project from a template, kind of li
 
 ### Installation
 
-Haven't published it anywhere yet, so you'll have to install it using `cargo build --release` and then copy the binary to your path.
+Currently only available on crates.io
+
+```bash
+cargo install servust
+```
 
 ### Usage
 
