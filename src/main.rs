@@ -2,6 +2,7 @@ use clap::{self, Parser};
 use std::{path::Path, process::Command};
 
 mod types;
+mod lib;
 
 use types::framework::install_framework;
 
@@ -30,7 +31,8 @@ struct Arguments {
     database: Option<String>,
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let args = Arguments::parse();
     println!("{:?}", args);
 
@@ -56,7 +58,7 @@ fn main() {
         None => "postgres".to_string(),
     };
 
-    match install_framework(args.framework) {
+    match install_framework(args.framework).await {
         Ok(_) => println!("framework added"),
         Err(e) => {
             println!("{}", e);
