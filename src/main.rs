@@ -80,14 +80,4 @@ async fn main() {
             return;
         }
     }
-
-    /*
-        The structure of the app
-        - `cargo new <name>` // done
-        - change directory to <name> // done
-        - check if the database is to be set to default or specified correctly // done
-        - sort library, database and orm specifications into proper structs
-        - pass in database option to the framework.rs and orm.rs files
-        - check the <library> and <orm> and install all dependencies using `cargo add`
-    */
 }
