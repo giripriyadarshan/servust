@@ -1,0 +1,94 @@
+name: release
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  publish:
+    name: Publish for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: servust
+            asset_name: servust-linux-amd64
+          - os: macos-latest
+            artifact_name: servust
+            asset_name: servust-macos-amd64
+          - os: windows-latest
+            artifact_name: servust.exe
+            asset_name: servust-windows-amd64.exe
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install LLVM Tools
+        run: rustup component add llvm-tools-preview
+
+      - name: Build
+        shell: bash
+        run: |
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            # Windows MSVC does not yet support PGO
+            # https://github.com/rust-lang/rust/issues/61002
+            cargo build --release --locked
+          else
+            just build
+          fi
+      - name: Build archive
+        shell: bash
+        run: |
+          staging="${{matrix.asset_name}}-src"
+          mkdir -p "$staging"
+          cp {README.md,UNLICENSE,LICENSE-MIT} "$staging/"
+          cp {build.rs,Cargo.toml,Cargo.lock} "$staging/"
+          cp justfile "$staging/"
+          cp -R ./src "./$staging/src"
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            7z a "${staging}.zip" "$staging"
+            echo "ASSET=${staging}.zip" >> $GITHUB_ENV
+          else
+            mkdir -p "${staging}/pgo-data"
+            cp ./pgo-data/merged.profdata "./${staging}/pgo-data/merged.profdata"
+            tar czf "${staging}.tar.gz" "${staging}"
+            echo "ASSET=${staging}.tar.gz" >> $GITHUB_ENV
+          fi
+      - name: Create deb artifact
+        shell: bash
+        run: |
+          if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
+            cargo install cargo-deb
+            RUSTFLAGS="-Cllvm-args=-pgo-warn-missing-function -Cprofile-use=$(pwd)/pgo-data/merged.profdata" cargo deb
+            deb_path=$(find ./target/debian/ -type f -name 'servust*')
+            asset_path="${{ matrix.asset_name }}.deb"
+            mv "${deb_path}" "${asset_path}"
+            echo "DEB=${asset_path}" >> $GITHUB_ENV
+          fi
+      - name: Upload deb package
+        uses: svenstaro/upload-release-action@v2
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.DEB }}
+          asset_name: ${{ env.DEB }}
+          tag: ${{ github.ref }}
+
+      - name: Upload src and pgo data to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.ASSET }}
+          asset_name: ${{ env.ASSET }}
+          tag: ${{ github.ref }}
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: target/release/${{ matrix.artifact_name }}
+          asset_name: ${{ matrix.asset_name }}
+          tag: ${{ github.ref }}
