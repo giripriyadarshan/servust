@@ -24,7 +24,7 @@ jobs:
               sudo apt-get install -y libssl-dev
               export OPENSSL_DIR=/usr
           - os: macos-latest
-            artifact_name: /home/runner/work/servust/servust
+            artifact_name: /Users/runner/work/servust/servust
             asset_name: servust-apple-amd64
             target: x86_64-apple-darwin
             install_dependencies: |
