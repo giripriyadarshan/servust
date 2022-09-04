@@ -71,9 +71,14 @@ jobs:
         run: cargo build --release --target ${{ matrix.target }} --locked
 
       - name: Upload binary to release
-        uses: svenstaro/upload-release-action@v1-release
+        # uses: svenstaro/upload-release-action@v1-release
+        # with:
+        #   repo_token: ${{ secrets.GITHUB_TOKEN }}
+        #   file: ${{ matrix.artifact_name }}
+        #   asset_name: ${{ matrix.asset_name }}
+        #   tag: ${{ github.ref }}
+        uses: Shopify/upload-to-release@v1.0.1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ matrix.artifact_name }}
-          asset_name: ${{ matrix.asset_name }}
-          tag: ${{ github.ref }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ matrix.artifact_name }}
+          name: ${{ matrix.asset_name }}
