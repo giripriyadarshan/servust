@@ -16,7 +16,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: servust
+            artifact_name: /home/runner/work/servust/servust
             asset_name: servust-linux-amd64
             target: x86_64-unknown-linux-gnu
             install_dependencies: |
@@ -24,7 +24,7 @@ jobs:
               sudo apt-get install -y libssl-dev
               export OPENSSL_DIR=/usr
           - os: macos-latest
-            artifact_name: servust
+            artifact_name: /home/runner/work/servust/servust
             asset_name: servust-apple-amd64
             target: x86_64-apple-darwin
             install_dependencies: |
@@ -69,6 +69,6 @@ jobs:
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/release/${{ matrix.artifact_name }}
+          file: ${{ matrix.artifact_name }}
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
