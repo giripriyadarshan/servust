@@ -52,19 +52,24 @@ jobs:
           #     brew install openssl
           #     export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
     steps:
-      - uses: actions/checkout@v2
-      - run: ${{ matrix.install_dependencies }}
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: ${{ matrix.target }}
-          override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          # use-cross: true
-          use-cross: false
-          command: build
-          args: --release --target ${{ matrix.target }}
+      # - uses: actions/checkout@v2
+      # - run: ${{ matrix.install_dependencies }}
+      # - uses: actions-rs/toolchain@v1
+      #   with:
+      #     toolchain: stable
+      #     target: ${{ matrix.target }}
+      #     override: true
+      # - uses: actions-rs/cargo@v1
+      #   with:
+      #     # use-cross: true
+      #     use-cross: false
+      #     command: build
+      #     args: --release --target ${{ matrix.target }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build project
+        run: cargo build --release --target ${{ matrix.target }} --locked
+
       - name: Upload binary to release
         uses: svenstaro/upload-release-action@v1-release
         with:
