@@ -34,8 +34,7 @@ jobs:
             asset_name: servust-windows-amd64.exe
             target: x86_64-pc-windows-msvc
             install_dependencies: |
-              choco install openssl.light
-              echo "::add-path::C:\Program Files\OpenSSL-Win64\bin"
+              choco install openssl
           - os: ubuntu-latest
             artifact_name: servust
             asset_name: servust-linux-armv7
