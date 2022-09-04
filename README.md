@@ -33,8 +33,33 @@ OPTIONS:
 
 ### Example
 ```bash
-servust --framework actix --orm diesel my-server
+servust --framework actix --orm diesel --database postgres my-server
 ```
+
+
+
+### Support
+
+#### Frameworks
+- [x] actix
+- [ ] rocket
+- [ ] warp
+- [ ] axum
+- [ ] tonic
+
+#### ORMs
+- [x] Diesel.rs
+- [ ] Sea-ORM
+
+#### Databases
+- [x] Postgres
+- [ ] MySQL
+- [ ] SQLite
+
+#### Types
+- [x] With ORM + Database
+- [ ] Without ORM / Database
+- [ ] With Database only
 
 
 
