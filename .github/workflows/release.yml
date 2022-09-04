@@ -22,6 +22,7 @@ jobs:
             install_dependencies: |
               sudo apt-get update
               sudo apt-get install -y libssl-dev
+              export OPENSSL_DIR=/usr
           - os: macos-latest
             artifact_name: servust
             asset_name: servust-apple-amd64
@@ -42,6 +43,7 @@ jobs:
             install_dependencies: |
               sudo apt-get update
               sudo apt-get install -y libssl-dev
+              export OPENSSL_DIR=/usr
           - os: macos-latest
             artifact_name: servust
             asset_name: servust-apple-arm64
