@@ -53,8 +53,8 @@ servust --framework actix --orm diesel --database postgres my-server
 
 #### Databases
 - [x] Postgres
-- [ ] MySQL
-- [ ] SQLite
+- [x] MySQL
+- [x] SQLite
 
 #### Types
 - [x] With ORM + Database

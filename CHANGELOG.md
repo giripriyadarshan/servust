@@ -1,3 +1,9 @@
+## v0.1.3
+
+### Added
+- Support for MySQL and SQLite using diesel.rs
+  - Support for all 3 databases (Postgres, MySQL, SQLite) in sea-orm is available from v0.1.1 itself
+
 ## v0.1.2
 
 ### Added
