@@ -69,21 +69,3 @@ jobs:
           file: ${{ matrix.artifact_name }}
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
-          prerelease: true
-
-      # - name: Release
-      #   uses: softprops/action-gh-release@v1
-      #   with:
-      #     files: ${{ matrix.artifact_name }}
-      #     prerelease: true
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     body_path: CHANGELOG.md
-
-      # - name: Release
-      #   uses: ncipollo/release-action@v1
-      #   with:
-      #     artifacts: ${{ matrix.artifact_name }}
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     bodyFile: CHANGELOG.md
-      #     prerelease: true
-      #     allowUpdates: true
