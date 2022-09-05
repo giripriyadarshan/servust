@@ -16,7 +16,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: /home/runner/work/servust/servust
+            artifact_name: /home/runner/work/servust/servust/target/x86_64-unknown-linux-gnu/release/servust
             asset_name: servust-linux-amd64
             target: x86_64-unknown-linux-gnu
             install_dependencies: |
@@ -24,14 +24,14 @@ jobs:
               sudo apt-get install -y libssl-dev
               export OPENSSL_DIR=/usr
           - os: macos-latest
-            artifact_name: /Users/runner/work/servust/servust
+            artifact_name: /Users/runner/work/servust/servust/target/x86_64-apple-darwin/release/servust
             asset_name: servust-apple-amd64
             target: x86_64-apple-darwin
             install_dependencies: |
               brew install openssl
               export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
           - os: windows-latest
-            artifact_name: D:\a\servust\servust
+            artifact_name: D:\a\servust\servust\target\x86_64-pc-windows-msvc\release\servust.exe
             asset_name: servust-windows-amd64.exe
             target: x86_64-pc-windows-msvc
             install_dependencies: |
