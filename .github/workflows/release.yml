@@ -67,8 +67,8 @@ jobs:
       #     args: --release --target ${{ matrix.target }}
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and release
-      #   run: cargo build --release --target ${{ matrix.target }} --locked
+      - name: Build
+        run: cargo build --release --target ${{ matrix.target }} --locked
 
       # - name: Upload binary to release
       #   uses: svenstaro/upload-release-action@v1-release
@@ -77,11 +77,10 @@ jobs:
       #     file: ${{ matrix.artifact_name }}
       #     asset_name: ${{ matrix.asset_name }}
       #     tag: ${{ github.ref }}
-        uses: rust-build/rust-build.action@v1.3.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-        # Output target
-          RUSTTARGET: ${{ matrix.target }}
-        # UPLOAD_MODE: # optional
-
+          files: ${{ matrix.artifact_name }}
+          prerelease: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body_path: CHANGELOG.md
