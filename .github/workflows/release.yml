@@ -71,10 +71,18 @@ jobs:
       #     tag: ${{ github.ref }}
       #     prerelease: true
 
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     files: ${{ matrix.artifact_name }}
+      #     prerelease: true
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     body_path: CHANGELOG.md
+
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         with:
-          files: ${{ matrix.artifact_name }}
-          prerelease: true
+          artifacts: ${{ matrix.artifact_name }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          body_path: CHANGELOG.md
+          bodyFile: CHANGELOG.md
+          prerelease: true
