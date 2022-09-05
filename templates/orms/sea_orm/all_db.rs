@@ -14,5 +14,5 @@ async fn connection_pool() -> AppState {
 }
 
 pub fn pool() -> AppState {
-    connection_pool().unwrap()
+    tokio::runtime::Runtime::new().unwrap().block_on(connection_pool())
 }
