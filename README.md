@@ -42,14 +42,14 @@ servust --framework actix --orm diesel --database postgres my-server
 
 #### Frameworks
 - [x] actix
+- [x] tonic
 - [ ] rocket
 - [ ] warp
 - [ ] axum
-- [ ] tonic
 
 #### ORMs
 - [x] Diesel.rs
-- [ ] Sea-ORM
+- [x] Sea-ORM
 
 #### Databases
 - [x] Postgres

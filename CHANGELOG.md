@@ -1,3 +1,8 @@
+## v0.1.4
+
+### Added
+- Tonic.rs support
+
 ## v0.1.3
 
 ### Added

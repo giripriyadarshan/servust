@@ -41,7 +41,6 @@ pub async fn sea_orm(database: String, framework: &str) -> Result<bool, String> 
 
     println!("get started with Sea-ORM at https://www.sea-ql.org/SeaORM/docs/index/");
 
-    download_file(&format!(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/orms/sea_orm/all_db.rs"), "src/db.rs").await;
+    download_file("https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/orms/sea_orm/all_db.rs", "src/db.rs").await;
     Ok(true)
 }
