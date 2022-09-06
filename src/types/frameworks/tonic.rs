@@ -69,13 +69,14 @@ pub async fn tonic() -> Result<bool, String> {
     )
     .await;
     download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/proto/main.proto",
+        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/main.proto",
         "proto/main.proto",
     ).await;
     download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/proto/build.rs",
+        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/build.rs",
         "build.rs",
-    ).await;
+    )
+    .await;
 
     Ok(true)
 }
