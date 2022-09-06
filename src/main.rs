@@ -34,13 +34,12 @@ struct Arguments {
 
 #[tokio::main]
 async fn main() {
+    let args = Arguments::parse();
+
     if which("cargo").is_none() {
         println!("Please install cargo using rustup via https://rustup.rs/");
         return;
     }
-
-    let args = Arguments::parse();
-    println!("{:?}", args);
 
     let create_new_bin = Command::new("cargo")
         .arg("new")
@@ -77,7 +76,6 @@ async fn main() {
         Ok(_) => println!("orm added"),
         Err(e) => {
             println!("{}", e);
-            return;
         }
     }
 }
