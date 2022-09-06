@@ -59,21 +59,21 @@ pub async fn tonic() -> Result<bool, String> {
     )
     .await;
     download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/client.rs",
+        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/client.rs",
         "src/client.rs",
     )
     .await;
     download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/lib.rs",
+        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/lib.rs",
         "src/lib.rs",
     )
     .await;
     download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/main.proto",
+        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/main.proto",
         "proto/main.proto",
     ).await;
     download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/build.rs",
+        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/build.rs",
         "build.rs",
     )
     .await;
