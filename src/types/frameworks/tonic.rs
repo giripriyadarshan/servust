@@ -25,7 +25,7 @@ pub async fn tonic() -> Result<bool, String> {
     let tonic_build = Command::new("cargo")
         .arg("add")
         .arg("tonic-build")
-        .arg("--dev")
+        .arg("--build")
         .status()
         .unwrap();
 
