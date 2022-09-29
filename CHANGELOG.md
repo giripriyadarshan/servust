@@ -1,7 +1,7 @@
 ## v0.1.5
 
 ### Added
-- [Savlo](https://salvo.rs) support
+- [Salvo](https://salvo.rs) support
 
 ## v0.1.4
 
