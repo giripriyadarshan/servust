@@ -3,7 +3,7 @@ pub mod orms;
 
 pub mod install {
     use super::{
-        frameworks::{actix::actix, tonic::tonic},
+        frameworks::{actix::actix, salvo::salvo, tonic::tonic},
         orms::{diesel::diesel, sea_orm::sea_orm},
     };
 
@@ -27,6 +27,7 @@ pub mod install {
         match framework {
             "actix" => actix().await,
             "tonic" => tonic().await,
+            "salvo" => salvo().await,
             _ => Err(format!(
                 "{} is not an implemented framework by Servust",
                 framework
