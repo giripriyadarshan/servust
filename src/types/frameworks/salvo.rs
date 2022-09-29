@@ -26,8 +26,7 @@ pub async fn salvo() -> Result<bool, String> {
         return Err("Error adding tokio package".to_string());
     }
 
-    // WARNING: Replace beta with main when stable is released
-    download_file("https://raw.githubusercontent.com/giripriyadarshan/servust/beta/templates/frameworks/salvo.rs", "src/main.rs").await;
+    download_file("https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/salvo.rs", "src/main.rs").await;
 
     Ok(true)
 }
