@@ -4,6 +4,10 @@ Servust is a simple CLI tool to create a new project from a template, kind of li
 
 [![crates.io version]][crates.io link] [![Crates.io Downloads]][crates.io link] [![crates.io license]][crates.io link] [![Github image]][Github status]
 
+Support: 
+
+[![Matrix image]][Matrix link]
+
 
 ### Installation
 
@@ -41,8 +45,9 @@ servust --framework actix --orm diesel --database postgres my-server
 ### Support
 
 #### Frameworks
-- [x] actix
-- [x] tonic
+- [x] [actix](https://actix.rs)
+- [x] [tonic](https://github.com/hyperium/tonic)
+- [x] [salvo](https://salvo.rs)
 - [ ] rocket
 - [ ] warp
 - [ ] axum
@@ -72,3 +77,5 @@ servust --framework actix --orm diesel --database postgres my-server
 [crates.io license]: https://img.shields.io/crates/l/servust
 [Github image]: https://github.com/giripriyadarshan/servust/workflows/ci/badge.svg
 [Github status]: https://github.com/giripriyadarshan/servust/actions
+[Matrix image]: https://img.shields.io/matrix/giripriyadarshan-servust:matrix.org
+[Matrix link]: https://matrix.to/#/#giripriyadarshan-servust:matrix.org
