@@ -1,7 +1,12 @@
+## v0.1.5
+
+### Added
+- [Savlo](https://salvo.rs) support
+
 ## v0.1.4
 
 ### Added
-- Tonic.rs support
+- [Tonic](https://github.com/hyperium/tonic) support
 
 ## v0.1.3
 
