@@ -7,10 +7,10 @@ pub async fn salvo() -> Result<bool, String> {
         .arg("salvo")
         .arg("--features")
         .arg("affix")
-        .status()
+        .output()
         .unwrap();
 
-    if !salvo.success() {
+    if !salvo.status.success() {
         return Err("Error adding salvo package".to_string());
     }
 
@@ -19,10 +19,10 @@ pub async fn salvo() -> Result<bool, String> {
         .arg("tokio")
         .arg("--features")
         .arg("macros")
-        .status()
+        .output()
         .unwrap();
 
-    if !tokio.success() {
+    if !tokio.status.success() {
         return Err("Error adding tokio package".to_string());
     }
 

@@ -5,20 +5,20 @@ pub async fn tonic() -> Result<bool, String> {
     let tonic = Command::new("cargo")
         .arg("add")
         .arg("tonic")
-        .status()
+        .output()
         .unwrap();
 
-    if !tonic.success() {
+    if !tonic.status.success() {
         return Err("Error adding tonic package".to_string());
     }
 
     let prost = Command::new("cargo")
         .arg("add")
         .arg("prost")
-        .status()
+        .output()
         .unwrap();
 
-    if !prost.success() {
+    if !prost.status.success() {
         return Err("Error adding prost package".to_string());
     }
 
@@ -26,10 +26,10 @@ pub async fn tonic() -> Result<bool, String> {
         .arg("add")
         .arg("tonic-build")
         .arg("--build")
-        .status()
+        .output()
         .unwrap();
 
-    if !tonic_build.success() {
+    if !tonic_build.status.success() {
         return Err("Error adding tonic-build package".to_string());
     }
 

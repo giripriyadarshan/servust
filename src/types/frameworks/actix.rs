@@ -5,10 +5,10 @@ pub async fn actix() -> Result<bool, String> {
     let actix_web = Command::new("cargo")
         .arg("add")
         .arg("actix-web")
-        .status()
+        .output()
         .unwrap();
 
-    if !actix_web.success() {
+    if !actix_web.status.success() {
         return Err("Error adding actix package".to_string());
     }
 
