@@ -39,7 +39,7 @@ Options:
 servust --framework actix --orm diesel --database postgres my-server
 ```
 
-![CLI Run](https://github.com/giripriyadarshan/servust/blob/main/assets/img/servust_cli_running.png?raw=true)
+![CLI Run](https://github.com/giripriyadarshan/servust/blob/main/assets/img/servust_cli.gif?raw=true)
 
 
 
