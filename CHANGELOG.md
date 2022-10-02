@@ -1,7 +1,12 @@
+## v0.2.0
+
+### Visual transformations
+- Added emojis and progress bar, making the output more pleasant.
+
 ## v0.1.5
 
 ### Added
-- [Savlo](https://salvo.rs) support
+- [Salvo](https://salvo.rs) support
 
 ## v0.1.4
 

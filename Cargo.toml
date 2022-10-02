@@ -1,6 +1,6 @@
 [package]
 name = "servust"
-version = "0.1.5"
+version = "0.2.0"
 edition = "2021"
 authors = ["Priyadarshan Giri <giripriyadarshan@gmail.com>"]
 readme = "README.md"
@@ -16,6 +16,8 @@ exclude = ["target/**",".gitignore",".github/**","LICENSE-MIT",".idea/**"]
 
 [dependencies]
 clap = { version = "3.2.19", features = ["derive"] }
+console = "0.15.2"
+indicatif = "0.17.1"
 reqwest = "0.11.11"
 tokio = { version = "1.21.0", features = ["full"] }
 
