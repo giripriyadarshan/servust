@@ -20,18 +20,17 @@ cargo install servust
 ### Usage
 
 ```bash
-USAGE:
-    servust [OPTIONS] --framework <FRAMEWORK> --orm <ORM> <NAME>
+Usage: servust [OPTIONS] --framework <FRAMEWORK> --orm <ORM> <NAME>
 
-ARGS:
-    <NAME>    The name of the server
+Arguments:
+  <NAME>  The name of the server
 
-OPTIONS:
-    -d, --database <DATABASE>      database to be used (postgres, mysql, sqlite) default: postgres
-    -f, --framework <FRAMEWORK>    library/framework to be used (actix, warp, axum, tonic)
-    -h, --help                     Print help information
-    -o, --orm <ORM>                ORM to be used (diesel, sea-orm)
-    -V, --version                  Print version information
+Options:
+  -f, --framework <FRAMEWORK>  library/framework to be used (actix, warp, axum, tonic)
+  -o, --orm <ORM>              ORM to be used (diesel, sea-orm)
+  -d, --database <DATABASE>    database to be used (postgres, mysql, sqlite) default: postgres
+  -h, --help                   Print help information
+  -V, --version                Print version information
 ```
 
 

@@ -11,13 +11,9 @@ use lib::{progress_bar::progress_bar, which::which};
 use types::install::{install_framework, install_orm};
 
 #[derive(Parser, Default, Debug)]
-#[clap(
-    author = "Priyadarshan Giri <github/giripriyadarshan>",
-    version,
-    about = "Rust backend-server template generator"
-)]
+#[command(author, version, about, long_about = None)] // Read from `Cargo.toml`
 struct Arguments {
-    #[clap(forbid_empty_values = true)]
+    #[clap(required = true)]
     /// The name of the server
     name: String,
 
