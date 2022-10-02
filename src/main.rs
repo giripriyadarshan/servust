@@ -1,10 +1,13 @@
 use clap::{self, Parser};
+use console::{style, Emoji};
+use indicatif::HumanDuration;
+use std::time::Instant;
 use std::{path::Path, process::Command};
 
 mod lib;
 mod types;
 
-use lib::which::which;
+use lib::{progress_bar::progress_bar, which::which};
 use types::install::{install_framework, install_orm};
 
 #[derive(Parser, Default, Debug)]
@@ -34,23 +37,39 @@ struct Arguments {
 
 #[tokio::main]
 async fn main() {
+    let started = Instant::now();
     let args = Arguments::parse();
 
     if which("cargo").is_none() {
-        println!("Please install cargo using rustup via https://rustup.rs/");
+        println!(
+            "{}",
+            style("Please install cargo using rustup via https://rustup.rs/").red()
+        );
         return;
     }
+
+    let new_bin_pb = progress_bar();
+    new_bin_pb.set_message("Creating new binary");
 
     let create_new_bin = Command::new("cargo")
         .arg("new")
         .arg(&args.name)
-        .status()
+        .output()
         .unwrap();
 
-    if create_new_bin.success() {
-        println!("warming up {}", &args.name);
+    if create_new_bin.status.success() {
+        new_bin_pb.finish_and_clear();
+        println!(
+            "  {} Created new binary {}",
+            Emoji("🦀", ""),
+            style(&args.name).bold()
+        );
     } else {
-        println!("Error creating {}", &args.name);
+        new_bin_pb.finish_with_message("Failed to create new binary");
+        println!(
+            "{}",
+            style("Please check if the binary already exists").red()
+        );
         return;
     }
 
@@ -64,18 +83,36 @@ async fn main() {
 
     let framework = args.framework.as_str();
 
+    let install_framework_pb = progress_bar();
+    install_framework_pb.set_message("Installing framework");
     match install_framework(framework).await {
-        Ok(_) => println!("framework added"),
+        Ok(_) => {
+            install_framework_pb.finish_and_clear();
+            println!(
+                "  {} Installed {}",
+                Emoji("💻", ""),
+                style(framework).bold()
+            );
+        }
         Err(e) => {
             println!("{}", e);
             return;
         }
     }
 
-    match install_orm(args.orm, database_arg, framework).await {
-        Ok(_) => println!("orm added"),
+    let install_orm_pb = progress_bar();
+    install_orm_pb.set_message("Installing ORM");
+    match install_orm(args.orm.clone(), database_arg, framework).await {
+        Ok(_) => {
+            install_orm_pb.finish_and_clear();
+            println!("  {} Installed {}", Emoji("📝", ""), style(args.orm).bold());
+        }
         Err(e) => {
             println!("{}", e);
         }
     }
+
+    let elapsed = HumanDuration(started.elapsed()).to_string();
+    println! {"\n"}; // everyone needs their space
+    println!("  {} Done in {}", Emoji("🎉", ""), style(elapsed).bold());
 }

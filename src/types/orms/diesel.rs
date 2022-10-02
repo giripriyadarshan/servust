@@ -7,24 +7,22 @@ pub async fn diesel(database: String) -> Result<bool, String> {
         .arg("diesel")
         .arg("--features")
         .arg(format!("{},r2d2", database))
-        .status()
+        .output()
         .unwrap();
 
-    if !diesel.success() {
+    if !diesel.status.success() {
         return Err("Error adding diesel package".to_string());
     }
 
     let r2d2 = Command::new("cargo")
         .arg("add")
         .arg("r2d2")
-        .status()
+        .output()
         .unwrap();
 
-    if !r2d2.success() {
+    if !r2d2.status.success() {
         return Err("Error adding r2d2 package".to_string());
     }
-
-    println!("get started with Diesel ORM at https://diesel.rs/guides/getting-started");
 
     download_file(&format!(
         "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/orms/diesel/{}.rs",
