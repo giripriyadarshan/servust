@@ -10,7 +10,7 @@ async fn index(req: HttpRequest) -> &'static str {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let pool = pool();
+    let pool = pool().await;
     HttpServer::new(move || {
         App::new()
             .wrap(middleware::Logger::default())
