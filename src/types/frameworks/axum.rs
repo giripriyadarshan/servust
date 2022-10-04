@@ -16,7 +16,7 @@ pub async fn axum() -> Result<bool, String> {
         .arg("add")
         .arg("tokio")
         .arg("--features")
-        .arg("macros")
+        .arg("full")
         .output()
         .unwrap();
 
