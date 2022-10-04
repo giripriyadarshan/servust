@@ -24,8 +24,7 @@ pub async fn axum() -> Result<bool, String> {
         return Err("Error adding tokio package".to_string());
     }
 
-    // change beta to main branch after testing and ready to merge with main
-    download_file("https://raw.githubusercontent.com/giripriyadarshan/servust/beta/templates/frameworks/axum.rs", "src/main.rs").await;
+    download_file("https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/axum.rs", "src/main.rs").await;
 
     Ok(true)
 }
