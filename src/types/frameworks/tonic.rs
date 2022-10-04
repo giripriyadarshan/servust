@@ -53,30 +53,17 @@ pub async fn tonic() -> Result<bool, String> {
 
     std::fs::create_dir("proto").unwrap();
 
+    let github_raw_path = "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/";
+
+    download_file(&(github_raw_path.to_owned() + "server.rs"), "src/server.rs").await;
+    download_file(&(github_raw_path.to_owned() + "client.rs"), "src/client.rs").await;
+    download_file(&(github_raw_path.to_owned() + "lib.rs"), "src/lib.rs").await;
     download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/tonic/server.rs",
-        "src/server.rs",
-    )
-    .await;
-    download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/client.rs",
-        "src/client.rs",
-    )
-    .await;
-    download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/lib.rs",
-        "src/lib.rs",
-    )
-    .await;
-    download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/main.proto",
+        &(github_raw_path.to_owned() + "main.proto"),
         "proto/main.proto",
-    ).await;
-    download_file(
-        "https://raw.githubusercontent.com/giripriyadarshan/servust/main/templates/frameworks/tonic/build.rs",
-        "build.rs",
     )
     .await;
+    download_file(&(github_raw_path.to_owned() + "build.rs"), "build.rs").await;
 
     Ok(true)
 }
