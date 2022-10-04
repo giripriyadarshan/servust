@@ -1,4 +1,9 @@
-## v.2.2
+## v0.2.3
+
+## Added
+- [Axum](https://github.com/tokio-rs/axum) support
+
+## v0.2.2
 
 ### Fixed
 - runtime error on async inside async fixed

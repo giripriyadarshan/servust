@@ -49,6 +49,7 @@ servust --framework actix --orm diesel --database postgres my-server
 - [x] [actix](https://actix.rs)
 - [x] [tonic](https://github.com/hyperium/tonic)
 - [x] [salvo](https://salvo.rs)
+- [x] [axum](https://github.com/tokio-rs/axum)
 - [ ] rocket
 - [ ] warp
 - [ ] axum
