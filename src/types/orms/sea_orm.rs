@@ -8,18 +8,6 @@ pub async fn sea_orm(database: String, framework: &str) -> Result<bool, String> 
         _ => "runtime-tokio-native-tls",
     };
 
-    let tokio = Command::new("cargo")
-        .arg("add")
-        .arg("tokio")
-        .arg("--features")
-        .arg("full")
-        .output()
-        .expect("failed to execute process");
-
-    if !tokio.status.success() {
-        return Err(String::from_utf8_lossy(&tokio.stderr).to_string());
-    }
-
     let db = match database.as_str() {
         "mysql" => "mysql",
         "postgres" => "postgres",
