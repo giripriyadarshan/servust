@@ -15,7 +15,8 @@ pub async fn axum() -> Result<bool, String> {
     let tokio = Command::new("cargo")
         .arg("add")
         .arg("tokio")
-        .arg("--features macros")
+        .arg("--features")
+        .arg("macros")
         .output()
         .unwrap();
 
