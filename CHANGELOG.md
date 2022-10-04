@@ -1,3 +1,9 @@
+## v.2.2
+
+### Fixed
+- runtime error on async inside async fixed
+- tonic server template download error fixed
+
 ## v0.2.0
 
 ### Visual transformations
