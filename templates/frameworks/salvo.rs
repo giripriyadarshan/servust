@@ -1,4 +1,4 @@
-use salvo::{prelude::*, extra::affix};
+use salvo::{prelude::*, affix};
 use crate::db::pool;
 
 mod db;

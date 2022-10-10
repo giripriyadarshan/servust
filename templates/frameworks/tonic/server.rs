@@ -38,7 +38,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Server::builder()
         .add_service(GreeterServer::new(MyGreeter {
-            _connection: Some(pool()),
+            _connection: Some(pool().await),
         }))
         .serve(addr)
         .await?;
