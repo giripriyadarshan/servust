@@ -1,3 +1,8 @@
+## v0.2.5
+
+### Added
+- published documentation to [servust.giripriyadarshan.com](servust.giripriyadarshan.com)
+
 ## v0.2.4
 
 ### Added

@@ -1,6 +1,6 @@
 [package]
 name = "servust"
-version = "0.2.4"
+version = "0.2.5"
 edition = "2021"
 authors = ["Priyadarshan Giri <giripriyadarshan@gmail.com>"]
 readme = "README.md"
