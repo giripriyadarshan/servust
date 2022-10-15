@@ -1,6 +1,11 @@
+## v0.2.4
+
+### Added
+- Documentation for the project
+
 ## v0.2.3
 
-## Added
+### Added
 - [Axum](https://github.com/tokio-rs/axum) support
 
 ## v0.2.2
