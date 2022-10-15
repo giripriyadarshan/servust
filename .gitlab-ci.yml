@@ -10,7 +10,7 @@ pages:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - mdbook --version || cargo install mdbook
   script:
-    - mdbook build docs -d public
+    - mdbook build docs -d ../public
   only:
     - tags
   artifacts:
