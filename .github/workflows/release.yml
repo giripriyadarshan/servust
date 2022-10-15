@@ -71,9 +71,11 @@ jobs:
           tag: ${{ github.ref }}
   
   documentation:
-    name: Build and Release
+    name: Build Documentation and Release
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Install mdbook
         run: |
           mkdir bin
