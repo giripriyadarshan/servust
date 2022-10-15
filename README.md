@@ -52,7 +52,6 @@ servust --framework actix --orm diesel --database postgres my-server
 - [x] [axum](https://github.com/tokio-rs/axum)
 - [ ] rocket
 - [ ] warp
-- [ ] axum
 
 #### ORMs
 - [x] Diesel.rs
