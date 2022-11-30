@@ -53,7 +53,7 @@ jobs:
           #     export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Build
         run: cargo build --release --target ${{ matrix.target }} --locked
 
@@ -63,7 +63,7 @@ jobs:
           path: ${{ matrix.artifact_name }}
 
       - name: Upload binary to release
-        uses: svenstaro/upload-release-action@v1-release
+        uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ github.token }}
           file: ${{ matrix.artifact_name }}
