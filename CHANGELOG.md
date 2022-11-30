@@ -1,7 +1,12 @@
+## v0.2.6
+
+### Adapted
+- New version of [axum][axum]
+
 ## v0.2.5
 
 ### Added
-- published documentation to [servust.giripriyadarshan.com](servust.giripriyadarshan.com)
+- published documentation to [servust.giripriyadarshan.com][servust-website]
 
 ## v0.2.4
 
@@ -11,7 +16,7 @@
 ## v0.2.3
 
 ### Added
-- [Axum](https://github.com/tokio-rs/axum) support
+- [Axum][axum] support
 
 ## v0.2.2
 
@@ -27,12 +32,12 @@
 ## v0.1.5
 
 ### Added
-- [Salvo](https://salvo.rs) support
+- [Salvo][salvo] support
 
 ## v0.1.4
 
 ### Added
-- [Tonic](https://github.com/hyperium/tonic) support
+- [Tonic][tonic] support
 
 ## v0.1.3
 
@@ -46,3 +51,8 @@
 
 - ci/cd workflow
 - Actix + Diesel.rs + Postgres + Sea-ORM supported
+
+[axum]: https://github.com/tokio-rs/axum
+[tonic]: https://github.com/hyperium/tonic
+[salvo]: https://salvo.rs
+[servust-website]: https://servust.giripriyadarshan.com
