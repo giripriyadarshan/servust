@@ -4,10 +4,10 @@ use indicatif::HumanDuration;
 use std::time::Instant;
 use std::{path::Path, process::Command};
 
-mod lib;
+mod helpers;
 mod types;
 
-use lib::{progress_bar::progress_bar, which::which};
+use helpers::{progress_bar::progress_bar, which::which};
 use types::install::{install_framework, install_orm};
 
 #[derive(Parser, Default, Debug)]
