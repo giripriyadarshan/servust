@@ -4,7 +4,7 @@ use std::process::Command;
 pub async fn axum() -> Result<bool, String> {
     let axum = Command::new("cargo")
         .arg("add")
-        .arg("axum@0.6.0-rc.2")
+        .arg("axum")
         .output()
         .unwrap();
 
