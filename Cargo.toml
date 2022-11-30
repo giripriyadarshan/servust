@@ -1,6 +1,6 @@
 [package]
 name = "servust"
-version = "0.2.5"
+version = "0.2.6"
 edition = "2021"
 authors = ["Priyadarshan Giri <giripriyadarshan@gmail.com>"]
 readme = "README.md"
@@ -15,11 +15,11 @@ exclude = ["target/**",".gitignore",".github/**","LICENSE-MIT",".idea/**"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = { version = "4.0.12", features = ["derive"] }
+clap = { version = "4.0.29", features = ["derive"] }
 console = "0.15.2"
-indicatif = "0.17.1"
-reqwest = "0.11.12"
-tokio = { version = "1.21.2", features = ["full"] }
+indicatif = "0.17.2"
+reqwest = "0.11.13"
+tokio = { version = "1.22.0", features = ["full"] }
 
 [[bin]]
 name = "servust"

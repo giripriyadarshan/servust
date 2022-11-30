@@ -1,4 +1,4 @@
-use crate::lib::{append::append_at_end, download::download_file};
+use crate::helpers::{append::append_at_end, download::download_file};
 use std::process::Command;
 
 pub async fn tonic() -> Result<bool, String> {

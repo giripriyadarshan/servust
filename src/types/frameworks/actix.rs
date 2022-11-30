@@ -1,4 +1,4 @@
-use crate::lib::download::download_file;
+use crate::helpers::download::download_file;
 use std::process::Command;
 
 pub async fn actix() -> Result<bool, String> {
