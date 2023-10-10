@@ -1,8 +1,8 @@
 use tonic::transport::Endpoint;
 
-mod lib;
+mod proto;
 
-use lib::hello::{greeter_client::GreeterClient, HelloRequest};
+use proto::hello::{greeter_client::GreeterClient, HelloRequest};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
