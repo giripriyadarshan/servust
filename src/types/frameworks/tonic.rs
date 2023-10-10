@@ -46,7 +46,7 @@ pub async fn tonic() -> Result<bool, String> {
     }
 
     // append bin to Cargo.toml
-    let tonic_bin_append_text = "\n[lib]\npath=\"./src/lib.rs\"\n\n[[bin]]\nname=\"server\"\npath=\"./src/server.rs\"\n\n[[bin]]\nname=\"client\"\npath=\"./src/client.rs\"\n";
+    let tonic_bin_append_text = "\n[[bin]]\nname=\"server\"\npath=\"./src/server.rs\"\n\n[[bin]]\nname=\"client\"\npath=\"./src/client.rs\"\n";
     append_at_end("Cargo.toml", tonic_bin_append_text);
 
     std::fs::remove_file("src/main.rs").unwrap();
@@ -57,7 +57,7 @@ pub async fn tonic() -> Result<bool, String> {
 
     download_file(&(github_raw_path.to_owned() + "server.rs"), "src/server.rs").await;
     download_file(&(github_raw_path.to_owned() + "client.rs"), "src/client.rs").await;
-    download_file(&(github_raw_path.to_owned() + "lib.rs"), "src/lib.rs").await;
+    download_file(&(github_raw_path.to_owned() + "lib.rs"), "src/proto.rs").await;
     download_file(
         &(github_raw_path.to_owned() + "main.proto"),
         "proto/main.proto",

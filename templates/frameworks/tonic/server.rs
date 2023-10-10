@@ -3,9 +3,9 @@ mod db;
 use db::pool;
 use tonic::{transport::Server, Request, Response, Status};
 
-mod lib;
+mod proto;
 
-use crate::lib::hello::{
+use crate::proto::hello::{
     greeter_server::{Greeter, GreeterServer},
     HelloReply, HelloRequest,
 };
